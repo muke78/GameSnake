@@ -210,6 +210,16 @@ class Snake {
 
             this.death();
         }
+
+        for (let i = 8; i < this.body.length; i++) {
+            const distance =
+                Math.sqrt(Math.pow(this.position.x - this.body[i].path[0].x, 2) +
+                    Math.pow(this.position.y - this.body[i].path[0].y, 2));
+            if (distance < this.radio * 2) {
+                this.death();
+                return;
+            }
+        }
     }
     death() {
         this.velocity = 0;
